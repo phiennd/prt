@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kumari Anushka</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #F7F4EF; --ink: #1A1916; --muted: #6B6760;
+    --accent: #2D5A3D; --rule: #D8D3CB; --highlight: #E8F0EB;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: 'EB Garamond', Georgia, serif; font-size: 18px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 3rem; background: var(--bg); border-bottom: 1px solid var(--rule); }
+  .nav-name { font-family: 'DM Mono', monospace; font-size: 0.78rem; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .hero { padding: 9rem 3rem 5rem; max-width: 860px; margin: 0 auto; }
+  .hero-tag { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; }
+  .hero h1 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 400; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 1.8rem; }
+  .hero h1 em { font-style: italic; color: var(--muted); }
+  .hero-bio { font-size: 1.05rem; color: var(--muted); max-width: 580px; line-height: 1.9; margin-bottom: 1.1rem; }
+  .hero-bio a { color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; }
+  .hero-bio strong { color: var(--ink); font-weight: 500; }
+  .rule { width: 100%; max-width: 860px; margin: 0 auto; border: none; border-top: 1px solid var(--rule); }
+  section { max-width: 860px; margin: 0 auto; padding: 4rem 3rem; }
+  .section-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 2.5rem; }
+  .funding-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5px; background: var(--rule); border: 1px solid var(--rule); }
+  .fund-card { background: var(--bg); padding: 2rem; transition: background 0.2s; }
+  .fund-card:hover { background: var(--highlight); }
+  .fund-card-name { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+  .fund-card h3 { font-size: 1.05rem; font-weight: 500; margin-bottom: 0.5rem; line-height: 1.3; }
+  .fund-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+  .project-item { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; padding: 2.2rem 0; border-top: 1px solid var(--rule); }
+  .project-item:last-child { border-bottom: 1px solid var(--rule); }
+  .project-meta { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding-top: 0.2rem; line-height: 1.8; }
+  .project-meta .status { display: inline-block; margin-top: 0.6rem; padding: 0.2rem 0.6rem; background: var(--highlight); border: 1px solid var(--accent); color: var(--accent); font-size: 0.6rem; letter-spacing: 0.12em; border-radius: 2px; }
+  .project-content h3 { font-size: 1.2rem; font-weight: 500; margin-bottom: 0.5rem; }
+  .project-content p { font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin-bottom: 0.8rem; }
+  .project-content p:last-child { margin-bottom: 0; }
+  .project-content a { color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; font-size: 0.85rem; font-family: 'DM Mono', monospace; letter-spacing: 0.05em; }
+  .proof-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.4rem; padding: 0.35rem 0.8rem; border: 1px solid var(--rule); font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: all 0.2s; cursor: pointer; background: transparent; }
+  .proof-link:hover { border-color: var(--accent); color: var(--accent); background: var(--highlight); }
+  .proof-link::before { content: '↗  '; }
+  .recog-item { display: flex; justify-content: space-between; align-items: baseline; padding: 1.2rem 0; border-top: 1px solid var(--rule); gap: 2rem; }
+  .recog-item:last-child { border-bottom: 1px solid var(--rule); }
+  .recog-title { font-size: 1rem; font-weight: 400; }
+  .recog-org { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+  .collab-block { background: var(--ink); color: var(--bg); padding: 2.5rem; }
+  .collab-block .section-label { color: rgba(247,244,239,0.4); }
+  .collab-block h3 { font-size: 1.3rem; font-weight: 400; margin-bottom: 0.8rem; }
+  .collab-block p { font-size: 0.95rem; color: rgba(247,244,239,0.65); line-height: 1.75; max-width: 520px; }
+  .collab-block a { color: #A8C9B0; text-decoration: none; border-bottom: 1px solid currentColor; }
+  .contact-row { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+  .contact-link { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+  .contact-link::before { content: '→'; color: var(--accent); }
+  .contact-link:hover { color: var(--accent); }
+  /* MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(26,25,22,0.72); z-index: 200; backdrop-filter: blur(4px); align-items: center; justify-content: center; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--bg); max-width: 660px; width: 90%; max-height: 88vh; overflow-y: auto; padding: 3rem; position: relative; border: 1px solid var(--rule); }
+  .modal-close { position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none; font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); cursor: pointer; padding: 0.3rem 0.6rem; transition: color 0.2s; }
+  .modal-close:hover { color: var(--ink); }
+  .modal-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .modal h2 { font-size: 1.35rem; font-weight: 500; line-height: 1.3; margin-bottom: 0.5rem; }
+  .modal-date { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 2rem; }
+  .modal-field { display: grid; grid-template-columns: 140px 1fr; gap: 0.3rem 1rem; padding: 0.9rem 0; border-top: 1px solid var(--rule); font-size: 0.9rem; }
+  .modal-field:last-of-type { border-bottom: 1px solid var(--rule); margin-bottom: 1.5rem; }
+  .modal-field-key { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding-top: 0.1rem; }
+  .modal-field-val { color: var(--ink); line-height: 1.6; }
+  .modal-note { font-size: 0.88rem; color: var(--muted); line-height: 1.7; font-style: italic; }
+  footer { max-width: 860px; margin: 0 auto; padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--rule); }
+  footer p { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .fade { opacity: 0; transform: translateY(16px); animation: fadeUp 0.55s ease forwards; }
+  .fade:nth-child(1) { animation-delay: 0.05s; }
+  .fade:nth-child(2) { animation-delay: 0.15s; }
+  .fade:nth-child(3) { animation-delay: 0.25s; }
+  .fade:nth-child(4) { animation-delay: 0.35s; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.5rem; } .nav-links { gap: 1.2rem; }
+    .hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .project-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    footer { flex-direction: column; gap: 0.5rem; padding: 1.5rem; }
+    .collab-block { padding: 2rem 1.5rem; }
+    .modal { padding: 2rem 1.5rem; } .modal-field { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- IAC MODAL -->
+<div class="modal-overlay" id="iacModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">&#x2715; Close</button>
+    <p class="modal-label">Acceptance Letter &mdash; IAC 2026</p>
+    <h2>Autonomous deep-ocean observatories as terrestrial analogues for space medicine and longevity research</h2>
+    <p class="modal-date">Notification issued: 24 April 2026</p>
+    <div class="modal-field">
+      <span class="modal-field-key">Congress</span>
+      <span class="modal-field-val">77th International Astronautical Congress &mdash; Antalya, T&uuml;rkiye, 5&ndash;9 October 2026</span>
+    </div>
+    <div class="modal-field">
+      <span class="modal-field-key">Symposium</span>
+      <span class="modal-field-val">A1 &mdash; IAF/IAA Space Life Sciences Symposium</span>
+    </div>
+    <div class="modal-field">
+      <span class="modal-field-key">Session</span>
+      <span class="modal-field-val">4 &mdash; Medicine in Space and Extreme Environments</span>
+    </div>
+    <div class="modal-field">
+      <span class="modal-field-key">Format</span>
+      <span class="modal-field-val">9-minute oral presentation (Q&amp;A included)</span>
+    </div>
+    <div class="modal-field">
+      <span class="modal-field-key">Schedule</span>
+      <span class="modal-field-val">7 October 2026 &middot; 15:00 &middot; Room Hall 7 &middot; Order 3</span>
+    </div>
+    <div class="modal-field">
+      <span class="modal-field-key">Paper ID</span>
+      <span class="modal-field-val">IAC-26,A1,4,3,x113716</span>
+    </div>
+    <div class="modal-field">
+      <span class="modal-field-key">Indexed</span>
+      <span class="modal-field-val">SCOPUS &middot; EI Compendex &middot; DOI assigned on publication</span>
+    </div>
+    <p class="modal-note">
+      Issued by the International Programme Committee Co-Chairs. Papers are included in the 
+      IAF Digital Library and online Congress Proceedings. Author registration deadline: 7 September 2026.
+    </p>
+  </div>
+</div>
+
+<nav>
+  <a href="#" class="nav-name">Kumari Anushka</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#recognition">Recognition</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <p class="hero-tag fade">Ashoka University &middot; UG-25 &middot; 100% Merit Scholarship</p>
+  <h1 class="fade">Researcher.<br><em>Founder in motion.</em></h1>
+  <p class="hero-bio fade">
+    I&rsquo;ve been obsessed with startups since 9th grade &mdash; building things before I had the vocabulary for it, 
+    running campaigns, writing for founders, doing investor outreach from my laptop at 15. 
+    That obsession never left. Now it&rsquo;s pointed at harder problems: antimicrobial resistance, 
+    synthetic biology, AI safety. Funded by <a href="https://www.mercatus.org/emergent-ventures" target="_blank">Emergent Ventures</a> 
+    and <a href="https://gradcapital.in" target="_blank">GradCapital</a>, and incubated at the 
+    <a href="https://www.ashoka.edu.in/page/infoedge-centre-for-entrepreneurship-135/" target="_blank">InfoEdge Centre for Entrepreneurship, Ashoka University</a>.
+  </p>
+  <p class="hero-bio fade">
+    The early startup years &mdash; growth, sales, ghostwriting, investor relations across Boston, Singapore, Bangalore &mdash; 
+    are where I really learned to build. <a href="mailto:voishca@gmail.com">Ask for my resume</a> if you want the full picture. It&rsquo;s more interesting than most.
+  </p>
+</div>
+
+<hr class="rule">
+
+<section id="supported">
+  <p class="section-label">Supported by</p>
+  <div class="funding-grid">
+    <div class="fund-card">
+      <p class="fund-card-name">Grant</p>
+      <h3>Emergent Ventures</h3>
+      <p>Tyler Cowen&rsquo;s fast-grants program at the Mercatus Center &mdash; for high-upside, early-stage ideas that most institutions wouldn&rsquo;t touch.</p>
+    </div>
+    <div class="fund-card">
+      <p class="fund-card-name">Grant</p>
+      <h3>GradCapital</h3>
+      <p>India&rsquo;s first student-founder fund. Backing builders before the idea is fully formed &mdash; betting on the person, not the pitch deck.</p>
+    </div>
+    <div class="fund-card">
+      <p class="fund-card-name">Incubation</p>
+      <h3>InfoEdge Centre for Entrepreneurship</h3>
+      <p>Ashoka University&rsquo;s flagship deep-tech pathway. Selected for TechSparks 2026 Bengaluru Immersion &mdash; Cohort 1.0.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="work">
+  <p class="section-label">Active work</p>
+
+  <div class="project-item">
+    <div class="project-meta">
+      AMR / Biotech<br>2025 &mdash; ongoing<br>
+      <span class="status">Active</span>
+    </div>
+    <div class="project-content">
+      <h3>FRosalind</h3>
+      <p>An AI-powered antimicrobial resistance intelligence platform. FRosalind models resistance as a system &mdash; enzymatic destruction, target modification, metabolic bypass, and efflux &mdash; not just a binding-site problem. It helps doctors choose faster, more accurate treatments and improves outbreak surveillance at the hospital level.</p>
+      <p>Built on protein language models, differential geometry, and fitness landscape research. The product wedge is a mechanism-aware antibiotic ranking layer for hospital stewardship workflows &mdash; operational enough for clinicians, molecular enough to become AMR research infrastructure.</p>
+    </div>
+  </div>
+
+  <div class="project-item">
+    <div class="project-meta">
+      Synthetic Biology<br>2025 &mdash; ongoing<br>
+      <span class="status">Research</span>
+    </div>
+    <div class="project-content">
+      <h3>Bacterial Food Fermentation</h3>
+      <p>Research collaboration with <strong>Prof. Imroze Khan</strong> at the Trivedi School of Biosciences, Ashoka University. Investigating bacteria-driven fermentation systems &mdash; how microbial ecology, fitness landscapes, and evolutionary biology shape fermentation outcomes at the population level. Bridging evolutionary genetics with food systems science.</p>
+    </div>
+  </div>
+
+  <div class="project-item">
+    <div class="project-meta">
+      AI Safety<br>2025 &mdash; ongoing<br>
+      <span class="status">Collaboration</span>
+    </div>
+    <div class="project-content">
+      <h3>Ternary for AI Safety</h3>
+      <p>Co-working with <a href="https://chethanreddygp.web.app/#upto" target="_blank">Chethan Reddy GP</a> on applying ternary logic and uncertainty-aware computation to AI safety. The premise: moving beyond binary true/false creates more honest, interpretable reasoning in frontier AI systems &mdash; where uncertainty should be a first-class citizen, not a failure mode.</p>
+    </div>
+  </div>
+
+  <div class="project-item">
+    <div class="project-meta">
+      Space Medicine<br>October 2026<br>
+      <span class="status">Accepted</span>
+    </div>
+    <div class="project-content">
+      <h3>IAC 2026 &mdash; Oral Presentation</h3>
+      <p>Accepted at the <strong>77th International Astronautical Congress</strong>, Antalya, T&uuml;rkiye. Presenting on autonomous deep-ocean observatories as terrestrial analogues for space medicine and longevity research &mdash; Session 4: Medicine in Space and Extreme Environments. Indexed in SCOPUS and EI Compendex.</p>
+      <button class="proof-link" onclick="openModal()">View acceptance letter</button>
+    </div>
+  </div>
+
+</section>
+
+<hr class="rule">
+
+<section id="recognition">
+  <p class="section-label">Recognition &amp; milestones</p>
+  <div class="recog-item">
+    <span class="recog-title">100% Merit Scholarship &mdash; Ashoka University</span>
+    <span class="recog-org">Ashoka &middot; 2021</span>
+  </div>
+  <div class="recog-item">
+    <span class="recog-title">Emergent Ventures Grant</span>
+    <span class="recog-org">Mercatus Center &middot; 2025</span>
+  </div>
+  <div class="recog-item">
+    <span class="recog-title">GradCapital Grant</span>
+    <span class="recog-org">GradCapital &middot; 2025</span>
+  </div>
+  <div class="recog-item">
+    <span class="recog-title">InfoEdge Centre Incubation &mdash; TechSparks Cohort 1.0</span>
+    <span class="recog-org">Ashoka / InfoEdge &middot; 2026</span>
+  </div>
+  <div class="recog-item">
+    <span class="recog-title">IAC 2026 &mdash; Oral Presentation Accepted</span>
+    <span class="recog-org">IAF &middot; 2026</span>
+  </div>
+</section>
+
+<section style="padding-top: 0; padding-bottom: 0;">
+  <div class="collab-block">
+    <p class="section-label">Current collaboration</p>
+    <h3>Ternary Logic &times; AI Safety</h3>
+    <p>Working with <a href="https://chethanreddygp.web.app/#upto" target="_blank">Chethan Reddy GP</a> on building frameworks where uncertainty is modelled explicitly &mdash; not suppressed. The goal is AI systems that are more honest about what they don&rsquo;t know. Early days, serious direction.</p>
+  </div>
+</section>
+
+<hr class="rule" style="margin-top: 3rem;">
+
+<section id="contact">
+  <p class="section-label">Get in touch</p>
+  <div class="contact-row">
+    <a href="mailto:voishca@gmail.com" class="contact-link">voishca@gmail.com</a>
+    <a href="tel:+919798061093" class="contact-link">+91 97980 61093</a>
+  </div>
+</section>
+
+<footer>
+  <p>Kumari Anushka &middot; Ashoka University UG-25</p>
+  <p>Bengaluru &middot; India</p>
+</footer>
+
+<script>
+  function openModal() { document.getElementById('iacModal').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeModal() { document.getElementById('iacModal').classList.remove('open'); document.body.style.overflow = ''; }
+  document.getElementById('iacModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
